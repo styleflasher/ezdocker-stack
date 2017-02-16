@@ -199,6 +199,28 @@ will not update the base Docker images in use.
 The stack configuration is mainly managed by the `docker-compose.yml` file, which is ignored in GIT.
 You can therefore edit this file and make all the changes you need for your project, like adding volumes, adding or removing containers, aso ...
 
+## HTTPS
+
+Attention: to use https create your certificates first and store them in config/apache/certs as apache.key and apache.crt. 
+
+### Ubuntu
+
+    openssl genrsa -out /etc/ssl/private/apache.key 2048 
+
+    openssl req -new -x509 -key /etc/ssl/private/apache.key -days 365 -sha256 -out /etc/ssl/certs/apache.crt
+
+Add those two files as volumes in you docker-compose.yml to the web container:
+
+            - "./config/apache/certs/apache.crt:/etc/ssl/certs/apache.crt"
+            - "./config/apache/certs/apache.key:/etc/ssl/private/apache.key"
+
+Then you can remove the comments of
+
+config/apache/sites-available/001-dynamic-vhost-ez5.conf
+
+    SSLEngine on
+    SSLCertificateFile /etc/ssl/certs/apache.crt
+    SSLCertificateKeyFile /etc/ssl/private/apache.key
 
 ## Accessing the application
 

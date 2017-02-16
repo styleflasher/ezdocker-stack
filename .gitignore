@@ -9,6 +9,9 @@
 /config/cli/php5/timezone.ini
 /config/apache/php5/timezone.ini
 
+/config/apache/certs/*
+!/config/apache/certs/.gitkeep
+
 /data/mysql/*
 /data/solr/*
 !/data/mysql/.gitkeep

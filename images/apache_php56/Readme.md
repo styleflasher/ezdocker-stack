@@ -21,6 +21,10 @@ Apache listens on ports:
 * 80 (dev vhost)
 * 82 (demo vhost)
 * 88 (controlpanel vhost)
+* 443 (dev host https)
+
+
+
 
 Those can be remapped when running the container.
 
@@ -36,7 +40,7 @@ This way it is faster to modify a vhost config and restart the Apache service wi
 You can run the container with the docker run command :
 
 
-	``` sh
+``` sh
     docker run klabs/apache_php56
     ```
 
