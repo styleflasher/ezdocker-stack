@@ -1,11 +1,11 @@
 FROM klabs/php7
-MAINTAINER Kaliop
+MAINTAINER styleflasher
 LABEL apache.version=2.4 \
       php.version=7.0 \
       application.type=ezpublish
 
-ARG DOCKER_TIMEZONE=Europe/Paris
-ARG DOCKER_LOCALE=fr_FR.UTF-8
+ARG DOCKER_TIMEZONE=Europe/Vienna
+ARG DOCKER_LOCALE=en_US.UTF-8
 
 # Configure timezone
 # -----------------------------------------------------------------------------
@@ -20,6 +20,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     pwgen \
     sudo \
     nano \
+    vim \
     unzip \
     locales \
     imagemagick \

@@ -1,11 +1,11 @@
 FROM klabs/php7
-MAINTAINER Kaliop
+MAINTAINER styleflasher
 
 LABEL php.version=7.0 \
       application.type=ezpublish
 
-ARG DOCKER_TIMEZONE=Europe/Paris
-ARG DOCKER_LOCALE=fr_FR.UTF-8
+ARG DOCKER_TIMEZONE=Europe/Vienna
+ARG DOCKER_LOCALE=en_US.UTF-8
 
 # Configure timezone
 # -----------------------------------------------------------------------------
@@ -34,6 +34,10 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     jpegoptim \
     poppler-utils \
     openjdk-7-jre-headless;
+
+# Node.js - https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions
+RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+RUN apt-get install -y nodejs
 
 # Configure locale for date, time & currency php functions
 # q: for what is the locale setup needed ?
