@@ -167,6 +167,16 @@ You can therefore change these virtual hosts to suit your project's need.
     containers for that, please read below for instructions)
 
 
+8. HTTPS Setup
+
+    Follow the steps in the HTTPS section below. If https is not needed, comment following lines in
+
+config/apache/sites-available/001-dynamic-vhost-ez5.conf
+
+    #SSLEngine on
+    #SSLCertificateFile /etc/ssl/certs/apache.crt
+    #SSLCertificateKeyFile /etc/ssl/private/apache.key
+
 ## Starting the Environment
 
 You can use the `stack.sh` script to start/stop the development environment.
@@ -199,9 +209,7 @@ will not update the base Docker images in use.
 The stack configuration is mainly managed by the `docker-compose.yml` file, which is ignored in GIT.
 You can therefore edit this file and make all the changes you need for your project, like adding volumes, adding or removing containers, aso ...
 
-## HTTPS
-
-Attention: to use https create your certificates first and store them in config/apache/certs as apache.key and apache.crt. 
+## HTTPS 
 
 ### Ubuntu
 
@@ -214,13 +222,8 @@ Add those two files as volumes in you docker-compose.yml to the web container:
             - "./config/apache/certs/apache.crt:/etc/ssl/certs/apache.crt"
             - "./config/apache/certs/apache.key:/etc/ssl/private/apache.key"
 
-Then you can remove the comments of
+Attention: to use https create your certificates first and store them in config/apache/certs as apache.key and apache.crt.
 
-config/apache/sites-available/001-dynamic-vhost-ez5.conf
-
-    SSLEngine on
-    SSLCertificateFile /etc/ssl/certs/apache.crt
-    SSLCertificateKeyFile /etc/ssl/private/apache.key
 
 ## Accessing the application
 
