@@ -26,7 +26,8 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     imagemagick \
     jpegoptim \
     poppler-utils \
-    openjdk-7-jre-headless;
+    openjdk-7-jre-headless \
+    php-zip;
 
 # locale for date, time & currency php functions
 # q: for what is the locale setup needed ?
@@ -105,6 +106,16 @@ RUN chmod 755 /root/bootstrap.sh
 EXPOSE 443
 EXPOSE 80
 EXPOSE 82
+
+# Install and enable IonCube loader
+
+RUN curl https://downloads.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz -o /root/ioncube_loaders_lin_x86-64.tar.gz;
+WORKDIR /root
+RUN tar xf ioncube_loaders_lin_x86-64.tar.gz; \
+    cp ioncube/ioncube_loader_lin_7.0.so /usr/lib/php/20151012/ioncube_loader_lin_7.0.so; \
+    echo 'zend_extension = /usr/lib/php/20151012/ioncube_loader_lin_7.0.so' >> /etc/php/7.0/apache2/conf.d/00-ioncube.ini; \
+    echo 'zend_extension = /usr/lib/php/20151012/ioncube_loader_lin_7.0.so' >> /etc/php/7.0/cli/conf.d/00-ioncube.ini;
+
 
 WORKDIR /var/www/
 
