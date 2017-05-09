@@ -1,5 +1,5 @@
 FROM debian:jessie
-MAINTAINER Kaliop
+MAINTAINER styleflasher
 LABEL php.version=7.0
 
 # Base packages
@@ -31,6 +31,7 @@ RUN apt-get update && \
     php7.0-memcached \
     php7.0-ldap \
     php7.0-xdebug \
+    php7.0-mbstring \
     libapache2-mod-php7.0
 
 # -----------------------------------------------------------------------------

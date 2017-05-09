@@ -1,4 +1,4 @@
-FROM klabs/php7
+FROM styleflasher/php7
 MAINTAINER styleflasher
 
 LABEL php.version=7.0 \
@@ -32,6 +32,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     mysql-client \
     imagemagick \
     jpegoptim \
+    bzip2 \
     poppler-utils \
     openjdk-7-jre-headless;
 

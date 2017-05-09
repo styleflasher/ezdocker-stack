@@ -1,4 +1,4 @@
-FROM klabs/php7
+FROM styleflasher/php7
 MAINTAINER styleflasher
 LABEL apache.version=2.4 \
       php.version=7.0 \
