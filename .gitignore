@@ -29,3 +29,5 @@
 !/logs/mysql/.gitkeep
 !/logs/solr/.gitkeep
 !/logs/varnish/.gitkeep
+
+config/apache/sites-available/004-custom-vhosts.conf
