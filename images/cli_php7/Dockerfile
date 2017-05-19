@@ -35,7 +35,10 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     bzip2 \
     poppler-utils \
     openjdk-7-jre-headless \
-    php-zip;
+    php-zip \
+    build-essential \
+    ruby \
+    ruby2.1-dev;
 
 # Node.js - https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions
 RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
@@ -106,6 +109,10 @@ RUN tar xf ioncube_loaders_lin_x86-64.tar.gz; \
     cp ioncube/ioncube_loader_lin_7.0.so /usr/lib/php/20151012/ioncube_loader_lin_7.0.so; \
     echo 'zend_extension = /usr/lib/php/20151012/ioncube_loader_lin_7.0.so' >> /etc/php/7.0/apache2/conf.d/00-ioncube.ini; \
     echo 'zend_extension = /usr/lib/php/20151012/ioncube_loader_lin_7.0.so' >> /etc/php/7.0/cli/conf.d/00-ioncube.ini;
+
+# Install compass for magento scss theme development
+RUN gem update --system
+RUN gem install compass
 
 WORKDIR /var/www/
 

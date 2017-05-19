@@ -17,6 +17,7 @@ RUN echo $DOCKER_TIMEZONE > /etc/timezone; dpkg-reconfigure -f noninteractive tz
 # Mysql client, useful for db dumps and such
 # @todo remove any unneeded ones (sudo, openssl?)
 # -----------------------------------------------------------------------------
+
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     curl \
     wget \
@@ -26,6 +27,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     locales \
     sudo \
     cron \
+    unzip \
     vim \
     nano \
     mysql-client \
@@ -33,7 +35,11 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     jpegoptim \
     bzip2 \
     poppler-utils \
-    openjdk-7-jre-headless;
+    openjdk-7-jre-headless \
+    build-essential \
+    ruby \
+    ruby2.1-dev;
+
 
 # Node.js - https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions
 RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
@@ -99,3 +105,16 @@ RUN chmod 755 /root/bootstrap.sh
 WORKDIR /var/www/
 
 CMD ["/root/bootstrap.sh"]
+
+# Install and enable IonCube loader
+ 
+RUN curl https://downloads.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz -o /root/ioncube_loaders_lin_x86-64.tar.gz;
+WORKDIR /root
+RUN tar xf ioncube_loaders_lin_x86-64.tar.gz; \
+    cp ioncube/ioncube_loader_lin_5.6.so /usr/lib/php5/20131226/ioncube_loader_lin_5.6.so; \
+    echo 'zend_extension = /usr/lib/php5/20131226/ioncube_loader_lin_5.6.so' >> /etc/php5/apache2/conf.d/00-ioncube.ini; \
+    echo 'zend_extension = /usr/lib/php5/20131226/ioncube_loader_lin_5.6.so' >> /etc/php5/cli/conf.d/00-ioncube.ini;
+
+# Install compass for magento scss theme development
+RUN gem update --system
+RUN gem install compass
