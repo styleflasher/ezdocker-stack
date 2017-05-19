@@ -51,6 +51,12 @@ if [ -f "/etc/apache2/sites-available/003-dynamic-vhost-ez4.conf" ];then
     a2ensite 003-dynamic-vhost-ez4.conf
 fi
 
+#Load custom vhosts if found
+if [ -f "/etc/apache2/sites-available/004-custom-vhosts.conf" ];then
+    a2ensite 004-custom-vhosts.conf
+fi
+
+
 
 trap clean_up SIGTERM
 
