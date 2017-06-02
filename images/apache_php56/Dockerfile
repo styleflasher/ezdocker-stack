@@ -112,3 +112,13 @@ EXPOSE 82
 WORKDIR /var/www/
 
 CMD ["/root/bootstrap.sh"]
+
+# Install and enable IonCube loader
+
+RUN curl https://downloads.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz -o /root/ioncube_loaders_lin_x86-64.tar.gz;
+WORKDIR /root
+RUN tar xf ioncube_loaders_lin_x86-64.tar.gz; \
+    cp ioncube/ioncube_loader_lin_5.6.so /usr/lib/php5/20131226/ioncube_loader_lin_5.6.so; \
+    echo 'zend_extension = /usr/lib/php5/20131226/ioncube_loader_lin_5.6.so' >> /etc/php5/apache2/conf.d/00-ioncube.ini; \
+    echo 'zend_extension = /usr/lib/php5/20131226/ioncube_loader_lin_5.6.so' >> /etc/php5/cli/conf.d/00-ioncube.ini;
+

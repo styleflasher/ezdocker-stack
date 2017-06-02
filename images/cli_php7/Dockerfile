@@ -34,7 +34,11 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     jpegoptim \
     bzip2 \
     poppler-utils \
-    openjdk-7-jre-headless;
+    openjdk-7-jre-headless \
+    php-zip \
+    build-essential \
+    ruby \
+    ruby2.1-dev;
 
 # Node.js - https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions
 RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
@@ -96,6 +100,19 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 COPY bootstrap.sh /root/bootstrap.sh
 RUN chmod 755 /root/bootstrap.sh
+
+# Install and enable IonCube loader
+
+RUN curl https://downloads.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz -o /root/ioncube_loaders_lin_x86-64.tar.gz;
+WORKDIR /root
+RUN tar xf ioncube_loaders_lin_x86-64.tar.gz; \
+    cp ioncube/ioncube_loader_lin_7.0.so /usr/lib/php/20151012/ioncube_loader_lin_7.0.so; \
+    echo 'zend_extension = /usr/lib/php/20151012/ioncube_loader_lin_7.0.so' >> /etc/php/7.0/apache2/conf.d/00-ioncube.ini; \
+    echo 'zend_extension = /usr/lib/php/20151012/ioncube_loader_lin_7.0.so' >> /etc/php/7.0/cli/conf.d/00-ioncube.ini;
+
+# Install compass for magento scss theme development
+RUN gem update --system
+RUN gem install compass
 
 WORKDIR /var/www/
 
