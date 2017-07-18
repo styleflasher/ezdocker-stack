@@ -114,6 +114,7 @@ RUN tar xf ioncube_loaders_lin_x86-64.tar.gz; \
 # Install compass for magento scss theme development
 RUN gem update --system
 RUN gem install compass
+RUN npm install -g grunt-cli
 
 WORKDIR /var/www/
 
