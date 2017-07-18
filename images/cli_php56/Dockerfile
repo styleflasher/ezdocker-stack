@@ -38,7 +38,8 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     openjdk-7-jre-headless \
     build-essential \
     ruby \
-    ruby2.1-dev;
+    ruby2.1-dev \
+    ssmtp;
 
 
 # Node.js - https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions

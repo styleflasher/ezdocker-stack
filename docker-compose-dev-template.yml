@@ -19,6 +19,8 @@ services:
             - ./config/apache/sites-available/001-dynamic-vhost-ez5.conf:/etc/apache2/sites-available/001-dynamic-vhost-ez5.conf
             - ./config/apache/sites-available/002-dynamic-vhost-ezplatform.conf:/etc/apache2/sites-available/002-dynamic-vhost-ezplatform.conf
             - ./config/apache/sites-available/003-dynamic-vhost-ez4.conf:/etc/apache2/sites-available/003-dynamic-vhost-ez4.conf
+            - ./config/apache/sites-available/004-custom-vhosts.conf:/etc/apache2/sites-available/004-custom-vhosts.conf
+            - ./config/apache/sites-available/ez4-common.conf:/etc/apache2/sites-available/ez4-common.conf
             - ./config/apache/sites-available/ez5-common.conf:/etc/apache2/sites-available/ez5-common.conf
             - ./config/apache/sites-available/ezplatform-common.conf:/etc/apache2/sites-available/ezplatform-common.conf
             - ./logs/apache/:/var/log/apache2
@@ -26,6 +28,9 @@ services:
             - "./config/apache/php5/timezone.ini:$DOCKER_PHP_CONF_PATH/apache2/conf.d/timezone.ini"
             - "$DOCKER_WWW_ROOT:$DOCKER_WWW_DEST"
             - "$DOCKER_STORAGE_LOCAL_PATH:$DOCKER_STORAGE_MOUNT_POINT"
+            - ./config/apache/certs/apache.crt:/etc/ssl/certs/apache.crt
+            - ./config/apache/certs/apache.key:/etc/ssl/certs/apache.key
+            - ./config/apache/ssmtp/ssmtp.conf:/etc/ssmtp/ssmtp.conf
         env_file:
             - docker-compose.env
             - docker-compose.env.local
@@ -48,6 +53,7 @@ services:
             - "./config/cli/php5/timezone.ini:$DOCKER_PHP_CONF_PATH/cli/conf.d/timezone.ini"
             - "$DOCKER_WWW_ROOT:$DOCKER_WWW_DEST"
             - "$DOCKER_STORAGE_LOCAL_PATH:$DOCKER_STORAGE_MOUNT_POINT"
+            - ./config/apache/ssmtp/ssmtp.conf:/etc/ssmtp/ssmtp.conf
         environment:
             - SSH_AUTH_SOCK=/ssh-agent
         env_file:
@@ -152,3 +158,12 @@ services:
             - docker-compose.env.local
         depends_on:
            - mysql
+
+    mailhog:
+        image: mailhog/mailhog
+        container_name: mailhog
+        env_file:
+            - docker-compose.env
+            - docker-compose.env.local
+        ports:
+            - "8025:8025"

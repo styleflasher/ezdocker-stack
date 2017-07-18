@@ -24,7 +24,8 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     imagemagick \
     jpegoptim \
     poppler-utils \
-    openjdk-7-jre-headless;
+    openjdk-7-jre-headless \
+    ssmtp;
 
 # locale for date, time & currency php functions
 # q: for what is the locale setup needed ?
