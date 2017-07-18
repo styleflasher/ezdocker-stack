@@ -19,6 +19,7 @@
         <li><a href="http://<?php echo $_SERVER['SERVER_NAME']; ?>:8983/solr/">Solr</a></li>
         <li><a href="/pma/index.php">PhpMyAdmin</a></li>
         <li><a href="/va/html/">Varnish</a></li>
+        <li><a href="//<?php echo $_SERVER['SERVER_NAME']; ?>:8025">MailHog SMTP Server</a></li>
     </ul>
 
     <p>credentials for Varnish: varnish / CacheMeIfYouCan</p>
