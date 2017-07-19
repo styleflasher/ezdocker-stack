@@ -31,6 +31,8 @@ services:
             - ./config/apache/certs/apache.crt:/etc/ssl/certs/apache.crt
             - ./config/apache/certs/apache.key:/etc/ssl/certs/apache.key
             - ./config/apache/ssmtp/ssmtp.conf:/etc/ssmtp/ssmtp.conf
+            - ./history/apache/.bash_history_site:/home/site/.bash_history
+            - ./history/apache/.bash_history_root:/root/.bash_history
         env_file:
             - docker-compose.env
             - docker-compose.env.local
@@ -54,6 +56,8 @@ services:
             - "$DOCKER_WWW_ROOT:$DOCKER_WWW_DEST"
             - "$DOCKER_STORAGE_LOCAL_PATH:$DOCKER_STORAGE_MOUNT_POINT"
             - ./config/apache/ssmtp/ssmtp.conf:/etc/ssmtp/ssmtp.conf
+            - ./history/cli/.bash_history_site:/home/site/.bash_history
+            - ./history/cli/.bash_history_root:/root/.bash_history
         environment:
             - SSH_AUTH_SOCK=/ssh-agent
         env_file:
