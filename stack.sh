@@ -49,10 +49,10 @@ buildDockerComposeLocalEnvFileIfNeeded() {
 
 
 configurePhpVersion() {
-    read -p "Which PHP version do you need to use for your project ? (possible values are : 5.4 , 5.6 or 7 - default: 5.6) " php_version
+    read -p "Which PHP version do you need to use for your project ? (possible values are : 5.4 , 5.6, 7, 7.1 - default: 5.6) " php_version
     php_version=${php_version:-5.6}
 
-    php_available_versions=(5.4 5.6 7)
+    php_available_versions=(5.4 5.6 7 7.1)
 
     if [[ ! " ${php_available_versions[@]} " =~ " ${php_version} " ]]; then
         echo "ERROR ! unsupported php version: aborting ..."
@@ -72,6 +72,9 @@ configurePhpVersion() {
         php_config_path="/etc/php/7.0"
    else
         php_config_path="/etc/php5"
+   fi
+   if [[ "$php_version" == 'php7.1' ]]; then
+        php_config_path="/etc/php/7.1"
    fi
 
    if grep -q DOCKER_PHP_CONF_PATH "$DOCKER_COMPOSE_CONFIG_FILE"; then
