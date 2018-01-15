@@ -73,7 +73,7 @@ configurePhpVersion() {
    else
         php_config_path="/etc/php5"
    fi
-   if [[ "$php_version" == 'php7.1' ]]; then
+   if [[ "$php_version" == 'php71' ]]; then
         php_config_path="/etc/php/7.1"
    fi
 
