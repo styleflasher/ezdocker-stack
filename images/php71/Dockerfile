@@ -1,5 +1,5 @@
 FROM debian:jessie
-MAINTAINER styleflahser
+MAINTAINER styleflasher
 LABEL php.version=7.1
 
 # Base packages
