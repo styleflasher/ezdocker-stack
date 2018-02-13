@@ -26,6 +26,8 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     jpegoptim \
     poppler-utils \
     openjdk-7-jre-headless \
+    pdftk \
+    zip \
     ssmtp;
 
 # Node.js - https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions

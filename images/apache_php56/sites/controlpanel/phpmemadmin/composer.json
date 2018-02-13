@@ -16,7 +16,7 @@
     "wp-cli/php-cli-tools": "~0.10"
   },
   "require-dev": {
-    "satooshi/php-coveralls": "dev-master"
+    "satooshi/php-coveralls": "~v2.0.0"
   },
   "autoload": {
     "psr-4": {
