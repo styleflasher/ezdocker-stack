@@ -124,8 +124,10 @@ services:
         container_name: haproxy
         ports:
            - "80:80"
+           - "443:443"
         volumes:
            - ./config/haproxy/haproxy.cfg:/etc/haproxy/haproxy.cfg
+           - ./config/haproxy/ssl/:/etc/ssl/private/
         env_file:
             - docker-compose.env
             - docker-compose.env.local
