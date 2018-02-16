@@ -81,7 +81,7 @@ services:
             - SYS_PTRACE
 
     solr:
-        image: klabs/solr4
+        image: styleflasher/solr6
         hostname: ${DOCKER_PROJECT_NAME}_solr
         container_name: solr
         ports:
