@@ -358,7 +358,7 @@
       -->
 
      <autoCommit>
-       <maxTime>${solr.autoCommit.maxTime:15000}</maxTime>
+       <maxTime>${solr.autoCommit.maxTime:100}</maxTime>
        <openSearcher>false</openSearcher>
      </autoCommit>
 
@@ -368,10 +368,10 @@
          faster and more near-realtime friendly than a hard commit.
       -->
 
-    <!-- <autoSoftCommit>
-       <maxTime>${solr.autoSoftCommit.maxTime:-1}</maxTime>
+     <autoSoftCommit>
+       <maxTime>${solr.autoSoftCommit.maxTime:100}</maxTime>
      </autoSoftCommit>
-   -->
+
     <!-- Update Related Event Listeners
 
          Various IndexWriter related events can trigger Listeners to
