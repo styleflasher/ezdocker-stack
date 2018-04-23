@@ -14,8 +14,10 @@
 
 /data/mysql/*
 /data/solr/*
+/data/solr6/*
 !/data/mysql/.gitkeep
 !/data/solr/.gitkeep
+!/data/solr6/.gitkeep
 
 /logs/apache/*
 /logs/cli/*
