@@ -23,12 +23,6 @@ RUN apt-get update && \
     php5-xdebug \
     libapache2-mod-php5
 
-# PHP config
-# -----------------------------------------------------------------------------
-# remove default xdebug config
-RUN rm /etc/php5/apache2/conf.d/20-xdebug.ini
-RUN rm /etc/php5/cli/conf.d/20-xdebug.ini
-
 # -----------------------------------------------------------------------------
 
 # Clear archives in apt cache folder

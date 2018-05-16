@@ -38,10 +38,6 @@ RUN apt-get update && \
 RUN curl -L -o /etc/php/7.1/cli/conf.d/custom_vars.ini https://raw.githubusercontent.com/kaliop/docker-images/master/build_files/php/custom_vars.ini && \
     cp /etc/php/7.1/cli/conf.d/custom_vars.ini /etc/php/7.1/apache2/conf.d/custom_vars.ini
 
-# remove default xdebug config
-RUN rm /etc/php/7.1/cli/conf.d/20-xdebug.ini
-RUN rm /etc/php/7.1/apache2/conf.d/20-xdebug.ini
-
 
 # Clear archives in apt cache folder
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*

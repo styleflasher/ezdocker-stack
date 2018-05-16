@@ -1,4 +1,4 @@
-FROM klabs/php56
+FROM styleflasher/php56
 MAINTAINER styleflasher
 
 LABEL php.version=5.6 \
