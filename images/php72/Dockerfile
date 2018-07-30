@@ -26,10 +26,11 @@ RUN apt-get update && \
     php7.2-curl \
     php7.2-imagick \
     php7.2-gd \
-    php7.2-xdebug \
     php7.2-xmlrpc \
     php7.2-memcached \
-    php7.2-mbstring
+    php7.2-xdebug \
+    php7.2-mbstring \
+    php7.2-apcu
 
 # PHP config
 # -----------------------------------------------------------------------------

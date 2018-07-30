@@ -28,6 +28,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     poppler-utils \
     openjdk-7-jre-headless \
     php-zip \
+    git \
     ssmtp;
 
 # locale for date, time & currency php functions
@@ -117,6 +118,7 @@ RUN tar xf ioncube_loaders_lin_x86-64.tar.gz; \
     echo 'zend_extension = /usr/lib/php/20151012/ioncube_loader_lin_7.1.so' >> /etc/php/7.1/apache2/conf.d/00-ioncube.ini; \
     echo 'zend_extension = /usr/lib/php/20151012/ioncube_loader_lin_7.1.so' >> /etc/php/7.1/cli/conf.d/00-ioncube.ini;
 
+RUN update-alternatives --set php /usr/bin/php7.1
 
 WORKDIR /var/www/
 

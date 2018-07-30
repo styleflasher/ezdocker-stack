@@ -116,6 +116,8 @@ RUN gem update --system
 RUN gem install compass
 RUN npm install -g grunt-cli
 
+RUN update-alternatives --set php /usr/bin/php7.1
+
 WORKDIR /var/www/
 
 CMD ["/root/bootstrap.sh"]
