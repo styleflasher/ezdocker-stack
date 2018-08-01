@@ -33,6 +33,7 @@ RUN apt-get update && \
     php7.0-xdebug \
     php7.0-mbstring \
     php7.0-soap \
+    php7.0-apcu \
     libapache2-mod-php7.0
 
 # -----------------------------------------------------------------------------
