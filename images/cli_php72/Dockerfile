@@ -96,6 +96,12 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 # -----------------------------------------------------------------------------
 
+# modman global install
+RUN curl -s -L https://raw.github.com/colinmollenhour/modman/master/modman-installer | bash
+RUN chmod +x ~/bin/modman
+RUN mv ~/bin/modman /usr/local/bin/modman
+# -----------------------------------------------------------------------------
+
 # Clear archives in apt cache folder
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 

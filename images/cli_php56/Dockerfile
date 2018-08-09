@@ -46,6 +46,11 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
 RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 RUN apt-get install -y nodejs
 
+# modman global install
+RUN curl -s -L https://raw.github.com/colinmollenhour/modman/master/modman-installer | bash
+RUN mv ~/bin/modman /usr/local/bin/
+# -----------------------------------------------------------------------------
+
 # Configure locale for date, time & currency php functions
 # q: for what is the locale setup needed ?
 # -----------------------------------------------------------------------------
@@ -108,7 +113,7 @@ WORKDIR /var/www/
 CMD ["/root/bootstrap.sh"]
 
 # Install and enable IonCube loader
- 
+
 RUN curl https://downloads.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz -o /root/ioncube_loaders_lin_x86-64.tar.gz;
 WORKDIR /root
 RUN tar xf ioncube_loaders_lin_x86-64.tar.gz; \

@@ -45,6 +45,11 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
 RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 RUN apt-get install -y nodejs
 
+# modman global install
+RUN curl -s -L https://raw.github.com/colinmollenhour/modman/master/modman-installer | bash
+RUN mv ~/bin/modman /usr/local/bin/
+# -----------------------------------------------------------------------------
+
 # Configure locale for date, time & currency php functions
 # q: for what is the locale setup needed ?
 # -----------------------------------------------------------------------------
