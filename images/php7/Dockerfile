@@ -16,6 +16,7 @@ RUN echo "deb http://packages.dotdeb.org jessie all" > /etc/apt/sources.list.d/d
 # -----------------------------------------------------------------------------
 RUN apt-get update && \
     apt-get install -y \
+    ncdu \
     php7.0 \
     php7.0-cli \
     php7.0-mysql \
@@ -34,6 +35,7 @@ RUN apt-get update && \
     php7.0-mbstring \
     php7.0-soap \
     php7.0-apcu \
+    php7.0-bcmath \
     libapache2-mod-php7.0
 
 # -----------------------------------------------------------------------------

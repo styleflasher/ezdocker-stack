@@ -17,6 +17,7 @@ RUN wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
 RUN apt-get update && \
     apt-get install -y \
     curl \
+    ncdu \
     php7.2 \
     php7.2-readline \
     php7.2-mysql \
@@ -30,6 +31,9 @@ RUN apt-get update && \
     php7.2-memcached \
     php7.2-xdebug \
     php7.2-mbstring \
+    php7.2-bcmath \
+    php7.2-soap \
+    php7.2-zip \
     php7.2-apcu
 
 # PHP config

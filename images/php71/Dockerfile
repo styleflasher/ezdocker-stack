@@ -16,6 +16,7 @@ RUN wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
 # -----------------------------------------------------------------------------
 RUN apt-get update && \
     apt-get install -y \
+    ncdu \
     curl \
     php7.1 \
     php7.1-readline \
@@ -31,6 +32,9 @@ RUN apt-get update && \
     php7.1-xdebug \
     php7.1-mbstring \
     php7.1-apcu \
+    php7.1-bcmath \
+    php7.1-soap \
+    php7.1-zip \
     php7.1-mcrypt
 
 # PHP config
