@@ -136,7 +136,7 @@ services:
            - solr
 
     mysql:
-        image: klabs/mysql
+        image: styleflasher/mysql
         hostname: ${DOCKER_PROJECT_NAME}_mysql
         container_name: mysql
         # nb: this prevents the image to start on some ubuntu installs because of apparmor config...

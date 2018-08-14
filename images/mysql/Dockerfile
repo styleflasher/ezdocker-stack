@@ -1,6 +1,6 @@
-FROM mysql:5.6
+FROM mysql:5.7
 MAINTAINER Kaliop
-LABEL mysql.version=5.6
+LABEL mysql.version=5.7
 
 ARG DOCKER_TIMEZONE=Europe/Paris
 

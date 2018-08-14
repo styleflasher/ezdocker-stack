@@ -41,6 +41,11 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     ruby2.1-dev \
     ssmtp;
 
+# modman global install
+RUN curl -s -L https://raw.github.com/colinmollenhour/modman/master/modman-installer | bash
+RUN mv ~/bin/modman /usr/local/bin/
+# -----------------------------------------------------------------------------
+
 # Node.js - https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions
 RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 RUN apt-get install -y nodejs
