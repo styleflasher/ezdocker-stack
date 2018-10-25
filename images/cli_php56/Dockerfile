@@ -39,6 +39,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     build-essential \
     ruby \
     ruby2.1-dev \
+    zip \
     ssmtp;
 
 
