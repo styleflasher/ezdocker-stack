@@ -40,6 +40,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     ruby \
     ruby2.1-dev \
     zip \
+    pdftk \
     ssmtp;
 
 
