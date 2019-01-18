@@ -37,6 +37,8 @@ RUN apt-get update && \
     php7.2-apcu \
     php7.2-redis
 
+RUN update-alternatives --set php /usr/bin/php7.2
+
 # PHP config
 # -----------------------------------------------------------------------------
 # Custom PHP variables
