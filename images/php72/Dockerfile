@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM debian:stretch
 MAINTAINER styleflasher
 LABEL php.version=7.2
 
@@ -34,7 +34,8 @@ RUN apt-get update && \
     php7.2-bcmath \
     php7.2-soap \
     php7.2-zip \
-    php7.2-apcu
+    php7.2-apcu \
+    php7.2-redis
 
 # PHP config
 # -----------------------------------------------------------------------------

@@ -34,16 +34,27 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     jpegoptim \
     bzip2 \
     poppler-utils \
-    openjdk-7-jre-headless \
+    openjdk-8-jre-headless \
     php-zip \
     build-essential \
     ruby \
-    ruby2.1-dev \
+    ruby-dev \
     ssmtp;
+
+# Install compass for magento scss theme development
+RUN gem update --system
+RUN gem install compass
+
+# yarn global install
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+RUN apt-get update && apt-get install -y yarn
 
 # Node.js - https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions
 RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 RUN apt-get install -y nodejs
+
+RUN npm install -g grunt-cli
 
 # Configure locale for date, time & currency php functions
 # q: for what is the locale setup needed ?
@@ -116,11 +127,6 @@ RUN tar xf ioncube_loaders_lin_x86-64.tar.gz; \
     cp ioncube/ioncube_loader_lin_7.2.so /usr/lib/php/20151012/ioncube_loader_lin_7.2.so; \
     echo 'zend_extension = /usr/lib/php/20151012/ioncube_loader_lin_7.2.so' >> /etc/php/7.2/apache2/conf.d/00-ioncube.ini; \
     echo 'zend_extension = /usr/lib/php/20151012/ioncube_loader_lin_7.2.so' >> /etc/php/7.2/cli/conf.d/00-ioncube.ini;
-
-# Install compass for magento scss theme development
-RUN gem update --system
-RUN gem install compass
-RUN npm install -g grunt-cli
 
 WORKDIR /var/www/
 

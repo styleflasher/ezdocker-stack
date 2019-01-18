@@ -41,6 +41,11 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     ruby2.1-dev \
     ssmtp;
 
+# yarn global install
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+RUN apt-get update && apt-get install yarn
+
 # modman global install
 RUN curl -s -L https://raw.github.com/colinmollenhour/modman/master/modman-installer | bash
 RUN mv ~/bin/modman /usr/local/bin/

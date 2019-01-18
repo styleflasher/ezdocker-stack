@@ -35,7 +35,8 @@ RUN apt-get update && \
     php7.1-bcmath \
     php7.1-soap \
     php7.1-zip \
-    php7.1-mcrypt
+    php7.1-mcrypt \
+    php7.1-redis
 
 # PHP config
 # -----------------------------------------------------------------------------
