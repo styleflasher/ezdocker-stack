@@ -9,3 +9,4 @@ long_query_time = 5
 slow_query_log_file = /var/log/mysql/slow-queries.log
 
 secure-file-priv = ""
+max_allowed_packet = 67108864
