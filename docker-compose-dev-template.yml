@@ -20,6 +20,7 @@ services:
             - ./config/apache/sites-available/002-dynamic-vhost-ezplatform.conf:/etc/apache2/sites-available/002-dynamic-vhost-ezplatform.conf
             - ./config/apache/sites-available/003-dynamic-vhost-ez4.conf:/etc/apache2/sites-available/003-dynamic-vhost-ez4.conf
             - ./config/apache/sites-available/004-custom-vhosts.conf:/etc/apache2/sites-available/004-custom-vhosts.conf
+            - ./config/apache/sites-available/005-sylius-vhost.conf:/etc/apache2/sites-available/005-sylius-vhost.conf
             - ./config/apache/sites-available/ez4-common.conf:/etc/apache2/sites-available/ez4-common.conf
             - ./config/apache/sites-available/ez5-common.conf:/etc/apache2/sites-available/ez5-common.conf
             - ./config/apache/sites-available/ezplatform-common.conf:/etc/apache2/sites-available/ezplatform-common.conf
@@ -79,6 +80,13 @@ services:
             - docker-compose.env.local
         cap_add:
             - SYS_PTRACE
+
+    redis:
+        image: redis
+        hostname: ${DOCKER_PROJECT_NAME}_redis
+        container_name: redis
+        expose:
+            - 6379
 
     solr:
         image: styleflasher/solr6

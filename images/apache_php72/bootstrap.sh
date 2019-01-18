@@ -56,6 +56,10 @@ if [ -f "/etc/apache2/sites-available/004-custom-vhosts.conf" ];then
     a2ensite 004-custom-vhosts.conf
 fi
 
+#Load sylius vhost if found
+if [ -f "/etc/apache2/sites-available/005-sylius-vhost.conf" ];then
+    a2ensite 005-sylius-vhost.conf
+fi
 
 trap clean_up SIGTERM
 
