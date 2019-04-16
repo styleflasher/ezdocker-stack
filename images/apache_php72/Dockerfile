@@ -30,6 +30,8 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     php-zip \
     ssmtp;
 
+RUN curl -sL https://deb.nodesource.com/setup_11.x | sudo -E bash -
+RUN apt-get install -y nodejs
 # locale for date, time & currency php functions
 # q: for what is the locale setup needed ?
 # -----------------------------------------------------------------------------
