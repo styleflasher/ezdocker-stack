@@ -61,6 +61,11 @@ if [ -f "/etc/apache2/sites-available/005-sylius-vhost.conf" ];then
     a2ensite 005-sylius-vhost.conf
 fi
 
+#Load test vhost if found
+if [ -f "/etc/apache2/sites-available/00-custom-dynamic-vhost.conf" ];then
+    a2ensite 00-custom-dynamic-vhost.conf
+fi
+
 trap clean_up SIGTERM
 
 service apache2 restart
