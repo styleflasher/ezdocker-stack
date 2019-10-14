@@ -3,7 +3,7 @@
 [mysqld]
 
 log-error = /var/log/mysql/error.log
-general_log = on
+general_log = off
 general_log_file = /var/log/mysql/query.log
 
 slow_query_log = 1
