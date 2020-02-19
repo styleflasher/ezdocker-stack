@@ -132,3 +132,7 @@ RUN tar xf ioncube_loaders_lin_x86-64.tar.gz; \
 RUN export NVM_DIR="/home/site/nvm" && curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash
 RUN echo 'export NVM_DIR="/home/site/nvm"' >> "/home/site/.bashrc"
 RUN echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm' >> "/home/site/.bashrc"
+
+# install custom font needed for chinese pdf to png conversion
+RUN mkdir /usr/share/fonts/truetype/arphic;\
+    curl https://raw.githubusercontent.com/indico/indico-fonts/master/indico_fonts/uming.ttc -o /usr/share/fonts/truetype/arphic/uming.ttc
