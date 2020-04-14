@@ -61,6 +61,11 @@ if [ -f "/etc/apache2/sites-available/005-sylius-vhost.conf" ];then
     a2ensite 005-sylius-vhost.conf
 fi
 
+#Load ezplatform3 vhost if found
+if [ -f "/etc/apache2/sites-available/006-ezplatform3-vhost.conf" ];then
+    a2ensite 006-ezplatform3-vhost.conf
+fi
+
 #Load test vhost if found
 if [ -f "/etc/apache2/sites-available/00-custom-dynamic-vhost.conf" ];then
     a2ensite 00-custom-dynamic-vhost.conf
