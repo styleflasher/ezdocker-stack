@@ -19,6 +19,7 @@ RUN echo $DOCKER_TIMEZONE > /etc/timezone; dpkg-reconfigure -f noninteractive tz
 # -----------------------------------------------------------------------------
 
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
+    apt-transport-https \
     curl \
     wget \
     telnet \
@@ -43,9 +44,13 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     pdftk \
     ssmtp;
 
+# yarn global install
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+RUN apt-get update && apt-get install yarn
 
 # Node.js - https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions
-RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+RUN curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -
 RUN apt-get install -y nodejs
 
 # modman global install
@@ -84,6 +89,7 @@ RUN addgroup --gid 1013 site && \
     cat /tmp/profile/.bashrc_append >> /home/site/.bashrc; \
     cat /tmp/profile/.vimrc_append >> /home/site/.vimrc; \
     cp /tmp/profile/.gitconfig /home/site/; \
+    mkdir /home/site/nvm; \
     chown -R site:site /home/site;
 
 # Misc
@@ -123,7 +129,10 @@ RUN tar xf ioncube_loaders_lin_x86-64.tar.gz; \
     echo 'zend_extension = /usr/lib/php5/20131226/ioncube_loader_lin_5.6.so' >> /etc/php5/apache2/conf.d/00-ioncube.ini; \
     echo 'zend_extension = /usr/lib/php5/20131226/ioncube_loader_lin_5.6.so' >> /etc/php5/cli/conf.d/00-ioncube.ini;
 
-# Install compass for magento scss theme development
-RUN gem update --system
-RUN gem install compass
-RUN npm install -g grunt-cli
+RUN export NVM_DIR="/home/site/nvm" && curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash
+RUN echo 'export NVM_DIR="/home/site/nvm"' >> "/home/site/.bashrc"
+RUN echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm' >> "/home/site/.bashrc"
+
+# install custom font needed for chinese pdf to png conversion
+RUN mkdir /usr/share/fonts/truetype/arphic;\
+    curl https://raw.githubusercontent.com/indico/indico-fonts/master/indico_fonts/uming.ttc -o /usr/share/fonts/truetype/arphic/uming.ttc
