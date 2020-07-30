@@ -39,7 +39,9 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     build-essential \
     rsync \
     ruby \
-    ruby-dev;
+    ruby-dev \
+    msmtp \
+    msmtp-mta;
 
 # Install compass for magento scss theme development
 RUN gem update --system

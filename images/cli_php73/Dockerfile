@@ -43,7 +43,9 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     build-essential \
     ruby \
     ruby-dev \
-    software-properties-common;
+    software-properties-common \
+    msmtp \
+    msmtp-mta;
 
 
 

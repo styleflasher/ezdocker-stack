@@ -27,6 +27,8 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     jpegoptim \
     poppler-utils \
     openjdk-11-jre-headless \
+    msmtp \
+    msmtp-mta \
     php-zip;
 
 RUN curl -sL https://deb.nodesource.com/setup_11.x | sudo -E bash -
