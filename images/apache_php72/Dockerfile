@@ -26,9 +26,8 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     imagemagick \
     jpegoptim \
     poppler-utils \
-    openjdk-8-jre-headless \
-    php-zip \
-    ssmtp;
+    openjdk-11-jre-headless \
+    php-zip;
 
 RUN curl -sL https://deb.nodesource.com/setup_11.x | sudo -E bash -
 RUN apt-get install -y nodejs

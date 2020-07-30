@@ -29,17 +29,17 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     unzip \
     vim \
     nano \
-    mysql-client \
+    default-mysql-client \
     imagemagick \
     jpegoptim \
     bzip2 \
     poppler-utils \
-    openjdk-8-jre-headless \
+    openjdk-11-jre-headless \
     php-zip \
     build-essential \
+    rsync \
     ruby \
-    ruby-dev \
-    ssmtp;
+    ruby-dev;
 
 # Install compass for magento scss theme development
 RUN gem update --system

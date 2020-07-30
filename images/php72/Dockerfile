@@ -1,4 +1,4 @@
-FROM debian:stretch
+FROM debian:buster
 MAINTAINER styleflasher
 LABEL php.version=7.2
 
