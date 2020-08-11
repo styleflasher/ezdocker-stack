@@ -12,6 +12,9 @@
 /config/apache/certs/*
 !/config/apache/certs/.gitkeep
 
+/config/gitlab-runner/*
+!/config/gitlab-runner/.gitkeep
+
 /data/mysql/*
 /data/solr/*
 /data/solr6/*

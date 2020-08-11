@@ -180,3 +180,12 @@ services:
             - docker-compose.env.local
         ports:
             - "8025:8025"
+
+    gitlab-runner:
+        image: gitlab/gitlab-runner:v13.1.1
+        container_name: gitlab_runner
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
+            - ./config/gitlab-runner:/etc/gitlab-runner
+            - ~/.ssh/config:/root/.ssh/config
+            - ~/.ssh/known_hosts:/root/.ssh/known_hosts
