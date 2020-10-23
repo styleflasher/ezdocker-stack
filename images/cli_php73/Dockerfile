@@ -32,7 +32,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     cron \
     unzip \
     zip \
-    pdfkt \
+    pdftk \
     vim \
     nano \
     default-mysql-client \
