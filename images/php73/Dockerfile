@@ -32,7 +32,23 @@ RUN apt-get update && \
     php-soap \
     php-zip \
     php-apcu \
-    php-redis
+    php-redis \
+    php-dev \
+    libmcrypt-dev \
+    php-pear
+
+RUN pecl channel-update pecl.php.net
+
+RUN pecl install channel://pecl.php.net/mcrypt-1.0.2
+
+RUN echo '\
+extension=mcrypt.so\n\
+' >> /etc/php/7.3/cli/php.ini
+
+RUN echo '\
+extension=mcrypt.so\n\
+' >> /etc/php/7.3/apache2/php.ini
+    
 
 # PHP config
 # -----------------------------------------------------------------------------
