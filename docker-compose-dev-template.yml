@@ -34,6 +34,7 @@ services:
             - ./config/apache/ssmtp/ssmtp.conf:/etc/ssmtp/ssmtp.conf
             - ./history/apache/.bash_history_site:/home/site/.bash_history
             - ./history/apache/.bash_history_root:/root/.bash_history
+            - ./config/imagemagick/policy.xml:/etc/ImageMagick-6/policy.xml
         env_file:
             - docker-compose.env
             - docker-compose.env.local
@@ -59,6 +60,7 @@ services:
             - ./config/apache/ssmtp/ssmtp.conf:/etc/ssmtp/ssmtp.conf
             - ./history/cli/.bash_history_site:/home/site/.bash_history
             - ./history/cli/.bash_history_root:/root/.bash_history
+            - ./config/imagemagick/policy.xml:/etc/ImageMagick-6/policy.xml
         environment:
             - SSH_AUTH_SOCK=/ssh-agent
         env_file:
