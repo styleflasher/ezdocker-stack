@@ -50,7 +50,7 @@ buildDockerComposeLocalEnvFileIfNeeded() {
 
 configurePhpVersion() {
     read -p "Which PHP version do you need to use for your project ? (possible values are : 5.4 , 5.6, 7, 7.1, 7.2, 7.3 - default: 7.2) " php_version
-    php_version=${php_version:-7.2}
+    php_version=${php_version:-7.3}
 
     php_available_versions=(5.4 5.6 7 7.1 7.2 7.3)
 
