@@ -48,7 +48,12 @@ extension=mcrypt.so\n\
 RUN echo '\
 extension=mcrypt.so\n\
 ' >> /etc/php/7.3/apache2/php.ini
-    
+
+# Update to xdebug 3
+RUN pecl install xdebug
+RUN echo '\
+zend_extension=/usr/lib/php/20180731/xdebug.so\n\' > /etc/php/7.3/cli/conf.d/20-xdebug.ini
+
 
 # PHP config
 # -----------------------------------------------------------------------------
